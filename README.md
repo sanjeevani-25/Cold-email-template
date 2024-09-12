@@ -1,3 +1,4 @@
+
 ---
 
 # Cold Email Automation Project
@@ -19,6 +20,14 @@ venv\Scripts\activate
 
 # Activate the virtual environment (for macOS/Linux)
 source venv/bin/activate
+```
+
+### Install requirements.txt
+
+To install the required dependencies, run:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ### 2. Get Gemini API Key and Add It to `.env` File
@@ -181,9 +190,11 @@ In this project:
 You can scale the system by adjusting the number of worker threads (`--concurrency`) to process tasks concurrently. Task status can be monitored using Celery’s logs.
 
 ---
+
 ---
 
 <center>Happy coding! 😊</center>
 
 ---
+
 ---
