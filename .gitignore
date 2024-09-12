@@ -1,0 +1,6 @@
+cold-email-env
+__pycache__
+
+.env
+*.html
+*.xlsx
