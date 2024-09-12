@@ -1,7 +1,6 @@
+# Cold Email Automation Project
 
 ---
-
-# Cold Email Automation Project
 
 This project automates sending cold emails based on data from an Excel sheet, utilizing an email template and content generation from an API. It uses Celery to handle background tasks such as sending emails.
 
@@ -32,7 +31,7 @@ pip install -r requirements.txt
 
 ### 2. Get Gemini API Key and Add It to `.env` File
 
-- Go to the Gemini API platform and generate an API key for content generation. 
+- Go to the Gemini API platform and generate an API key for content generation.
 - Create a `.env` file in the project root and add the following:
 
 ```bash
@@ -54,7 +53,7 @@ PROMPT=<your-prompt-for-generating-content>
 ```
 
 - **SENDER_EMAIL**: Your email address that will be used to send emails.
-- **SENDER_EMAIL_APP_PASSWORD**: Your app-specific password for logging in (e.g., for Gmail). Watch [this YouTube video](https://www.youtube.com/watch?v=HtC_wLpR-fA) to learn how to generate an app password for Gmail.
+- **SENDER_EMAIL_APP_PASSWORD**: Your app-specific password for logging in (e.g., for Gmail). Watch [this YouTube video](https://www.youtube.com/watch?v=MkLX85XU5rU) to learn how to generate an app password for Gmail.
 - **SENDER_NAME**: Your name as the sender.
 - **DEFAULT_SKILLS**: Your default skills to be added in the email template.
 - **PROMPT**: The default prompt for generating content from the Excel data.
@@ -73,10 +72,10 @@ Create an Excel file (`email_companies_data.xlsx`) with the following columns:
 
 Example:
 
-| HIRING_MANAGER | COMPANY_NAME | COMPANY_VALUES | COMPANY_SUMMARY | JOB_TITLE           | MY_SKILLS                | EMAIL               |
-|----------------|--------------|----------------|-----------------|---------------------|--------------------------|---------------------|
-| John Doe       | ABC Corp     | Innovation     | Tech leadership | Software Engineer    | Python, Django, ReactJS   | john.doe@abccorp.com|
-| Jane Smith     | XYZ Inc      | Integrity      | Service excellence| Backend Developer    | Java, Spring, SQL         | jane.smith@xyz.com  |
+| HIRING_MANAGER | COMPANY_NAME | COMPANY_VALUES | COMPANY_SUMMARY    | JOB_TITLE         | MY_SKILLS               | EMAIL                |
+| -------------- | ------------ | -------------- | ------------------ | ----------------- | ----------------------- | -------------------- |
+| John Doe       | ABC Corp     | Innovation     | Tech leadership    | Software Engineer | Python, Django, ReactJS | john.doe@abccorp.com |
+| Jane Smith     | XYZ Inc      | Integrity      | Service excellence | Backend Developer | Java, Spring, SQL       | jane.smith@xyz.com   |
 
 ### 5. Make the Email Template
 
@@ -84,13 +83,20 @@ Create an HTML file (`email_template.html`) for your email template. Use placeho
 
 ```html
 <html>
-<body>
+  <body>
     <p>Dear {HIRING_MANAGER},</p>
-    <p>I am excited to apply for the {JOB_TITLE} role at {COMPANY_NAME}. I admire your company's values of {COMPANY_VALUES} and its commitment to {COMPANY_SUMMARY}.</p>
-    <p>With my skills in {MY_SKILLS}, I believe I can contribute to your team and drive innovation.</p>
+    <p>
+      I am excited to apply for the {JOB_TITLE} role at {COMPANY_NAME}. I admire
+      your company's values of {COMPANY_VALUES} and its commitment to
+      {COMPANY_SUMMARY}.
+    </p>
+    <p>
+      With my skills in {MY_SKILLS}, I believe I can contribute to your team and
+      drive innovation.
+    </p>
     <p>Best regards,</p>
     <p>{NAME}</p>
-</body>
+  </body>
 </html>
 ```
 
@@ -115,7 +121,6 @@ Here’s a refined version that covers the Celery and Redis setup for both macOS
 Celery is used to manage background tasks (in this case, sending emails) asynchronously. In this project, Celery works alongside Redis, which serves as the message broker.
 
 #### Step 1: Install Redis
-
 
 <details>
   <summary><strong>Click to view Redis Installation Details</strong></summary>
@@ -152,6 +157,7 @@ Once Redis is installed, you need to start the Redis server before running Celer
 
 - **macOS:**
   Redis can be started with:
+
   ```bash
   brew services start redis
   ```
@@ -171,6 +177,7 @@ celery -A celery_app worker --concurrency=10 --loglevel=info
 ```
 
 In this command:
+
 - `--concurrency=10` indicates that Celery will use 10 workers (you can adjust this based on your system resources).
 - `--loglevel=info` controls the verbosity of Celery's output logs.
 
