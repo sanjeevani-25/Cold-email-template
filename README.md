@@ -1,7 +1,5 @@
 # Cold Email Automation Project
 
----
-
 This project automates sending cold emails based on data from an Excel sheet, utilizing an email template and content generation from an API. It uses Celery to handle background tasks such as sending emails.
 
 ## Step-by-Step Instructions
